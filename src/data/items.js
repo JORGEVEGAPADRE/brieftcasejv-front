@@ -1,0 +1,128 @@
+const items = [
+  {
+    texto1: "Jorge Gabriel Vega Ovalles",
+    texto2: "Telefonos: +56-9-72493618",
+    texto3: "Correo: jgvoslp@gmail.com",
+    texto4: "",
+    texto5: "Direccion: Pasaje Veintitres, casa 636, Colina, RM, Chile",
+    categoria_id: 2,
+    id: 1,
+  },
+  {
+    texto1: "App (Web): Rey David Fresh Food [2024+]",
+    texto2: "HTML-TailwindCSS-Laravel-API REST JSON-React-MySQL",
+    texto3: "Pedidos de Clientes, Control de Cocinas",
+    texto4: "Cliente: Restaurant Rey David C.A.",
+    texto5: "Urb. La Popular de San Francisco #49-68, Estado Zulia, Venezuela",
+    categoria_id: 3,
+    id: 2,
+  },
+  {
+    texto1: "App (Desktop): WoodPecker [2023+]",
+    texto2:
+      "C#-.Net Framework 4.7.6-SQL Server, Microsoft Visual Studio Community 2019",
+    texto3: "Operaciones de Entrada-Salida del Inventario",
+    texto4: "Cliente: Briceño y Asociados",
+    texto5: "Santa Adela 0573, 8440808 Recoleta, Región Metropolitana, Chile",
+    categoria_id: 3,
+    id: 3,
+  },
+  {
+    texto1: "App (web): DevInstagram [2021]",
+    texto2: "Tecnologias Utilizadas: HTML-TailwindCSS-Laravel-MySQL",
+    texto3: "Red Social similar a Twitter",
+    texto4: "Proyecto de Estudio Autodidacta # 1",
+    texto5: "",
+    categoria_id: 3,
+    id: 5,
+  },
+  {
+    texto1: "App (web): DevJobs [2021-2022]",
+    texto2: "HTML-TailwindCSS-Laravel-Breeze-Livewire-MySQL",
+    texto3:
+      "Plataforma para Reclutadores y Candidatos a Trabajos en el Area Tecnologica",
+    texto4: "Proyecto de Estudio Autodidacta # 2",
+    texto5: "",
+    categoria_id: 3,
+    id: 4,
+  },
+
+  {
+    texto1: "Titulo Obtenido: Ingeniero en Sistemas",
+    texto2: "I.U.P. Santiago Mariño",
+    texto3: "Tesis Mencion Honorica: Publicacion",
+    texto4: "1er Lugar Promocion",
+    texto5: "Direccion: Avenida La Limpia, Maracaibo, Venezuela",
+    categoria_id: 4,
+    id: 6,
+  },
+  {
+    texto1: "Titulo Obtenido: Tecnico Superior Universitario en Informatica",
+    texto2: "I.U.T Pedro Emilio Coll",
+    texto3: "Mencion Honorica: Cum Laude",
+    texto4: "1er Lugar Promocion",
+    texto5: "Direccion: Avenida Rafael Maria Baralt, Maracaibo, Venezuela",
+    categoria_id: 4,
+    id: 7,
+  },
+  {
+    texto1: "Titulo Obtenido: Bachiller en Ciencias",
+    texto2: "Instituto de Preparacion Educativa ( I.P.E. )",
+    texto3: "",
+    texto4: "",
+    texto5: "Direccion: Avenida Padilla, Maracaibo, Venezuela",
+    categoria_id: 4,
+    id: 8,
+  },
+  {
+    texto1: "HARD SKILLS",
+    texto2: "HTML-CSS-TailwindCSS Nivel: Muy Bueno",
+    texto3: "C#-Java-PHP-JavaScript Nivel: Muy Bueno",
+    texto4: "Laravel-NodeJs Nivel: Bueno",
+    texto5: "Express-React--Angular Nivel: Bueno",
+    categoria_id: 5,
+    id: 9,
+  },
+  {
+    texto1: "SOFT SKILLS",
+    texto2: "",
+    texto3: "Etica Laboral, Responsabilidad, Colaboracion",
+    texto4: "Habilidad para las Comunicaciones, Resolucion de Conflictos",
+    texto5: "Pensamiento Estrategico, Gestion del Tiempo",
+    categoria_id: 5,
+    id: 10,
+  },
+  {
+    texto1: "Español (oral/escrito) Nivel:Excelente",
+    texto2: "Ingles Oral=Regular Escrito=Bueno",
+    texto3: "",
+    texto4: "",
+    texto5: "",
+    categoria_id: 6,
+    id: 11,
+  },
+  {
+    texto1: "Conociendome un poco+...",
+    texto2: "Musica Predilecta: Hebrea, Cristianas",
+    texto3: "Deportes Preferidos: Futbol, Boxeo",
+    texto4: "Comida Predilecta: Comida Maracucha",
+    texto5: "Otras Preferencias: Leer, Investigar, Enseñar Matematicas",
+    categoria_id: 7,
+    id: 12,
+  },
+  {
+    texto1:
+      "Alguien a quien le debo todo lo que he logrado: Con Dios Todo, sin El Nada",
+    texto2:
+      "Las Joyas de Mi Corona ( mis hijos ): Sara, Enmanuel, Angel y Jorge ",
+    texto3: "Mi Ayuda Idonea (mi esposa): Sara",
+    texto4:
+      "Mis mejores maestros y ejemplos a seguir ( mis padres ): Elizabeth y Rafael",
+    texto5:
+      "Gracias Dios por la Vida, la Familia, Amigos, Compañeros que Fueron o son Parte de Mi Vida",
+    categoria_id: 1,
+    id: 13,
+  },
+];
+
+export { items };
