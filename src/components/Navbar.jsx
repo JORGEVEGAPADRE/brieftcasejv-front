@@ -1,43 +1,36 @@
-import {Pets } from "@mui/icons-material";
 import {
   AppBar,
-  Avatar, 
+  Avatar,
   Box,
   Menu,
   MenuItem,
   styled,
   Toolbar,
   Typography,
+  Stack,
 } from "@mui/material";
 import React, { useState } from "react";
 import Switch from "@mui/material/Switch";
 import useStore from "../hooks/useStore";
+import MenuIcon from "@mui/icons-material/Menu";
+import LanguageIcon from "@mui/icons-material/Language";
+import { Brightness4 } from "@mui/icons-material";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
 });
 
-const Icons = styled(Box)(({ theme }) => ({
-  display: "none",
-  alignItems: "center",
-  gap: "20px",
-  [theme.breakpoints.up("sm")]: {
-    display: "flex",
-  },
-}));
-
 const UserBox = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: "10px",
-  [theme.breakpoints.up("sm")]: {
-    display: "none",
-  },
 }));
-const Navbar = () => {
+
+const Navbar = ({ mode, setMode }) => {
   const [open, setOpen] = useState(false);
-  const { isEnglish, handleLanguageChange } = useStore();
+  const { isEnglish, handleLanguageChange, handleClickOp, initializePost } =
+    useStore();
 
   return (
     <AppBar position="sticky">
@@ -58,31 +51,35 @@ const Navbar = () => {
             : "Ingeniero Desarrollador de Software ( Desktop/Web ) Full Stack"}
         </Typography>
 
-        <Pets sx={{ display: { xs: "block", sm: "none" } }} />
+        <Box sx={{ display: { xs: "block", sm: "none" } }}>
+          <Switch
+            onChange={(e) => setMode(mode === "light" ? "dark" : "light")}
+          />
 
-        <Icons>
+          <Brightness4 style={{ verticalAlign: "middle" }} />
+        </Box>
+
+        <UserBox>
           <Switch
             checked={isEnglish}
             onChange={handleLanguageChange}
             color="outline"
           />
-          {isEnglish ? "English" : "Español"}
-
-          <Avatar
-            sx={{ width: 50, height: 50 }}
-            src="img/JVFOTO.jpeg"
-            onClick={(e) => setOpen(true)}
-          />
-        </Icons>
-        <UserBox onClick={(e) => setOpen(true)}>
+          {isEnglish ? "ENG" : "ESP"}
           <Avatar
             sx={{ width: 50, height: 50 }}
             src="img/JVFOTO.jpeg"
           />
           <Typography variant="span">Jorge</Typography>
+
+          <MenuIcon
+            onClick={(e) => setOpen(true)}
+            sx={{ display: { xs: "block", sm: "none" } }}
+          />
         </UserBox>
       </StyledToolbar>
       <Menu
+        sx={{ display: { xs: "block", sm: "block", md: "none" } }}
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
         open={open}
@@ -96,9 +93,27 @@ const Navbar = () => {
           horizontal: "right",
         }}
       >
-        <MenuItem> {isEnglish ? "Profile" : "Perfil"}</MenuItem>
-        <MenuItem> {isEnglish ? "My Account" : "My Cuenta"}</MenuItem>
-        <MenuItem>Logout</MenuItem>
+        <MenuItem onClick={() => handleClickOp(1)}>
+          {isEnglish ? "My Thoughts" : "Mis Pensamientos"}
+        </MenuItem>
+        <MenuItem onClick={() => handleClickOp(2)}>
+          {isEnglish ? "Contact Me" : "Contactame"}
+        </MenuItem>
+        <MenuItem onClick={() => handleClickOp(3)}>
+          {isEnglish ? "My Experience" : "Mi Experiencia"}
+        </MenuItem>
+        <MenuItem onClick={() => handleClickOp(4)}>
+          {isEnglish ? "My Academic Degrees" : "Mis Grados Academicos"}
+        </MenuItem>
+        <MenuItem onClick={() => handleClickOp(5)}>
+          {isEnglish ? "My Skills" : "Mis Habilidades"}
+        </MenuItem>
+        <MenuItem onClick={() => handleClickOp(6)}>
+          {isEnglish ? "My Languages" : "Mis Lenguajes"}
+        </MenuItem>
+        <MenuItem onClick={() => handleClickOp(7)}>
+          {isEnglish ? "My Hobbies" : "Mis Diversiones"}
+        </MenuItem>
       </Menu>
     </AppBar>
   );

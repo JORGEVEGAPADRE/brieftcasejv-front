@@ -1,14 +1,15 @@
 import Sidebar from "./components/Sidebar";
 import Feed from "./components/Feed";
 import Rightbar from "./components/Rightbar";
-import Hidden from "@mui/material/Hidden";
 import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Add from "./components/Add";
 import { SnackbarProvider } from "notistack";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, Hidden } from "@mui/material";
 import { useState } from "react";
-//import { theme } from "./theme";
+//import { useTheme } from "@material-ui/core/styles";
+//import useMediaQuery from "@mui/material/useMediaQuery";
+import { theme } from "./theme";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -18,6 +19,9 @@ function App() {
       mode: mode,
     },
   });
+  //const theme = useTheme();
+  //const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -28,20 +32,25 @@ function App() {
         <Box
           bgcolor={"background.default"}
           color={"text.primary"}
+          sx={{ display: { md: "block" } }}
         >
-          <Navbar />
+          <Navbar
+            setMode={setMode}
+            mode={mode}
+          />
           <Stack
             direction="row"
-            spacing={1}            
+            spacing={1}
             justifyContent="space-between"
           >
-            <Sidebar
-              setMode={setMode}
-              mode={mode}
-            />
             <Hidden only={["xs", "sm"]}>
-              <Feed />
+              <Sidebar
+                setMode={setMode}
+                mode={mode}
+              />
             </Hidden>
+
+            <Feed />
 
             <Hidden only={["xs", "sm"]}>
               <Rightbar />

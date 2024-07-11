@@ -11,7 +11,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Add as AddIcon } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import useStore from "../hooks/useStore";
@@ -32,7 +32,9 @@ const UserBox = styled(Box)({
 });
 
 const Add = () => {
+  const { isEnglish, initializePost } = useStore();
   const { enqueueSnackbar } = useSnackbar();
+
   const [empresa, setEmpresa] = useState("");
   const [correo, setCorreo] = useState("");
   const [empresaError, setEmpresaError] = useState("");
@@ -40,34 +42,54 @@ const Add = () => {
   const [comentario, setComentario] = useState("");
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const { isEnglish } = useStore();
+  const [isFormValid, setIsFormValid] = useState(false);
+
   const endpoint = "enviar-datos";
 
+  useEffect(() => {
+    setEmpresa("");
+    setCorreo("");
+    setComentario("");
+  }, [open]);
+
   const handleEmpresaChange = (event) => {
-    const newEmpresa = event.target.value;
-    setEmpresa(newEmpresa);
+    const newEmpresa = event.target.value.trim();
+
+    console.log(newEmpresa);
+
     // Validación del nombre
-    if (newEmpresa.length === 0) {
+    if (newEmpresa === "") {
       setEmpresaError("Ingrese el nombre de la empresa");
     } else {
+      setEmpresa(newEmpresa);
       setEmpresaError("");
     }
+    buttonActivate();
   };
 
   const handleCorreoChange = (event) => {
     const newCorreo = event.target.value;
-    setCorreo(newCorreo);
+    console.log(newCorreo);
 
     // Validación del correo
     const correoRegex = /^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/;
     if (!correoRegex.test(newCorreo)) {
       setCorreoError("Ingresa un correo valido");
     } else {
+      setCorreo(newCorreo);
       setCorreoError("");
     }
+    buttonActivate();
   };
-
-  const IsFormValid = !empresa || !correo;
+  const buttonActivate = () => {
+    if (empresaError === "" || correoError === "") {
+      setIsFormValid(false);
+      return;
+    }
+    if (empresa !== "" && correo !== "") {
+      setIsFormValid(true);
+    }
+  };
 
   async function sendData() {
     try {
@@ -97,19 +119,36 @@ const Add = () => {
   return (
     <>
       <Tooltip
-        onClick={(e) => setOpen(true)}
         title="Contact Me"
         sx={{
           position: "fixed",
           bottom: 20,
-          left: { xs: "calc(50% - 25px)", md: 30 },
+          left: { xs: "calc(40% - 25px)", md: 30 },
         }}
       >
         <Fab
+          onClick={(e) => setOpen(true)}
           color="primary"
           aria-label="add"
         >
-          <AddIcon />
+          <AddIcon style={{ fontSize: "30px", verticalAlign: "middle" }} />
+        </Fab>
+      </Tooltip>
+      <Tooltip
+        title="Contact Me"
+        sx={{
+          position: "fixed",
+          bottom: 20,
+          left: { xs: "calc(60% - 25px)", md: 15 },
+          display: { xs: "block", sm: "block", md: "none" },
+        }}
+      >
+        <Fab
+          onClick={initializePost}
+          color="success"
+          aria-label="add"
+        >
+          {isEnglish ? "Start" : "Inicio"}
         </Fab>
       </Tooltip>
 
@@ -146,25 +185,19 @@ const Add = () => {
               color="success"
               endIcon={<SendIcon />}
               onClick={sendData}
-              disabled={IsFormValid}
+              disabled={!isFormValid}
             >
-              {loading ? (
-                <CircularProgress size={24} />
-              ) : isEnglish ? (
-                "Send/Receive"
-              ) : (
-                "Enviar/Recibir"
-              )}
+              {isEnglish ? "Send/Receive" : "Enviar/Recibir"}
             </Button>
           </UserBox>
 
           <TextField
-            required="true"
+            isrequired="true"
             sx={{ width: "100%" }}
             id="empresa"
-            label={isEnglish ? "Company" : "Empresa"}
             value={empresa}
-            type="search"
+            label={isEnglish ? "Company*" : "Empresa*"}
+            type="text"
             variant="standard"
             onChange={handleEmpresaChange}
             error={!!empresaError}
@@ -172,11 +205,12 @@ const Add = () => {
           />
 
           <TextField
-            required="true"
+            isrequired="true"
             sx={{ width: "100%" }}
             id="correo"
+            value={correo}
             label={isEnglish ? "Email*" : "Correo*"}
-            type="search"
+            type="email"
             variant="standard"
             onChange={handleCorreoChange}
             error={!!correoError}
@@ -193,7 +227,7 @@ const Add = () => {
                 ? "Enter a Short Comment..."
                 : "Ingrese un Comentario Breve..."
             }
-            type="search"
+            type="text"
             variant="standard"
             onChange={(e) => setComentario(e.target.value)}
           />

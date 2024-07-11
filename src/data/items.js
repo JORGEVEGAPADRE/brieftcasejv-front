@@ -93,7 +93,7 @@ const items = [
     id: 10,
   },
   {
-    texto1: "Español (oral/escrito) Nivel:Excelente",
+    texto1: "Español (oral/escrito) Nativo:Excelente",
     texto2: "Ingles Oral=Regular Escrito=Bueno",
     texto3: "",
     texto4: "",

@@ -4,7 +4,7 @@ import EngineeringIcon from "@mui/icons-material/Engineering";
 import SchoolIcon from "@mui/icons-material/School";
 import FormatListNumberedRtlIcon from "@mui/icons-material/FormatListNumberedRtl";
 import GTranslateIcon from "@mui/icons-material/GTranslate";
-import LiquorIcon from "@mui/icons-material/Liquor";
+import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
 import Button from "@mui/material/Button";
 import useStore from "../hooks/useStore";
 import { Brightness4 } from "@mui/icons-material";
@@ -99,7 +99,7 @@ const Sidebar = ({ mode, setMode }) => {
           <ListItem disablePadding>
             <ListItemButton onClick={() => handleClickOp(7)}>
               <ListItemIcon>
-                <LiquorIcon />
+                <SportsSoccerIcon />
               </ListItemIcon>
 
               <ListItemText
