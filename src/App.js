@@ -7,9 +7,6 @@ import Add from "./components/Add";
 import { SnackbarProvider } from "notistack";
 import { CssBaseline, Hidden } from "@mui/material";
 import { useState } from "react";
-//import { useTheme } from "@material-ui/core/styles";
-//import useMediaQuery from "@mui/material/useMediaQuery";
-import { theme } from "./theme";
 
 function App() {
   const [mode, setMode] = useState("light");

@@ -1,6 +1,4 @@
 import * as React from "react";
-import CircularProgress from "@mui/material/CircularProgress";
-
 import {
   Avatar,
   Button,
@@ -68,7 +66,7 @@ const Add = () => {
   };
 
   const handleCorreoChange = (event) => {
-    const newCorreo = event.target.value;
+    const newCorreo = event.target.value.trim();
     console.log(newCorreo);
 
     // Validación del correo

@@ -7,13 +7,11 @@ import {
   styled,
   Toolbar,
   Typography,
-  Stack,
 } from "@mui/material";
 import React, { useState } from "react";
 import Switch from "@mui/material/Switch";
 import useStore from "../hooks/useStore";
 import MenuIcon from "@mui/icons-material/Menu";
-import LanguageIcon from "@mui/icons-material/Language";
 import { Brightness4 } from "@mui/icons-material";
 
 const StyledToolbar = styled(Toolbar)({
