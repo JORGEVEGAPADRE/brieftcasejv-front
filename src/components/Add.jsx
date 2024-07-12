@@ -35,8 +35,10 @@ const Add = () => {
 
   const [empresa, setEmpresa] = useState("");
   const [correo, setCorreo] = useState("");
-  const [empresaError, setEmpresaError] = useState("");
-  const [correoError, setCorreoError] = useState("");
+  const [empresaError, setEmpresaError] = useState(
+    "Ingrese el nombre de la empresa"
+  );
+  const [correoError, setCorreoError] = useState("Ingresa un correo valido");
   const [comentario, setComentario] = useState("");
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -48,15 +50,16 @@ const Add = () => {
     setEmpresa("");
     setCorreo("");
     setComentario("");
+    setIsFormValid(false);
   }, [open]);
 
   const handleEmpresaChange = (event) => {
-    const newEmpresa = event.target.value.trim();
-
-    console.log(newEmpresa);
+    const newEmpresa = event.target.value;
 
     // Validación del nombre
-    if (newEmpresa === "") {
+    if (newEmpresa.trim() == "") {
+      console.log("pase al error empresa");
+
       setEmpresaError("Ingrese el nombre de la empresa");
     } else {
       setEmpresa(newEmpresa);
@@ -66,12 +69,13 @@ const Add = () => {
   };
 
   const handleCorreoChange = (event) => {
-    const newCorreo = event.target.value.trim();
+    const newCorreo = event.target.value;
     console.log(newCorreo);
 
     // Validación del correo
     const correoRegex = /^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/;
     if (!correoRegex.test(newCorreo)) {
+      console.log("pase al error correo");
       setCorreoError("Ingresa un correo valido");
     } else {
       setCorreo(newCorreo);
@@ -80,12 +84,10 @@ const Add = () => {
     buttonActivate();
   };
   const buttonActivate = () => {
-    if (empresaError === "" || correoError === "") {
-      setIsFormValid(false);
-      return;
-    }
-    if (empresa !== "" && correo !== "") {
+    if (empresaError == "" && correoError == "") {
       setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
     }
   };
 
@@ -193,7 +195,6 @@ const Add = () => {
             isrequired="true"
             sx={{ width: "100%" }}
             id="empresa"
-            value={empresa}
             label={isEnglish ? "Company*" : "Empresa*"}
             type="text"
             variant="standard"
@@ -206,7 +207,6 @@ const Add = () => {
             isrequired="true"
             sx={{ width: "100%" }}
             id="correo"
-            value={correo}
             label={isEnglish ? "Email*" : "Correo*"}
             type="email"
             variant="standard"
