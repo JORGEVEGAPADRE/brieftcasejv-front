@@ -8,6 +8,7 @@ import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
 import Button from "@mui/material/Button";
 import useStore from "../hooks/useStore";
 import { Brightness4 } from "@mui/icons-material";
+
 import {
   Box,
   List,
@@ -20,7 +21,7 @@ import {
 import React from "react";
 
 const Sidebar = ({ mode, setMode }) => {
-  const { handleClickOp, initializePost, isEnglish } = useStore();
+  const { handleClickOp, isEnglish } = useStore();
 
   return (
     <Box
@@ -116,15 +117,6 @@ const Sidebar = ({ mode, setMode }) => {
               <Switch
                 onChange={(e) => setMode(mode === "light" ? "dark" : "light")}
               />
-
-              <Button
-                variant="contained"
-                color="success"
-                onClick={initializePost}
-                disableElevation
-              >
-                {isEnglish ? "Start" : "Inicio"}
-              </Button>
             </ListItemButton>
           </ListItem>
         </List>

@@ -7,6 +7,8 @@ import Add from "./components/Add";
 import { SnackbarProvider } from "notistack";
 import { CssBaseline, Hidden } from "@mui/material";
 import { useState } from "react";
+import useStore from "./hooks/useStore";
+import { useEffect } from "react";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -18,6 +20,12 @@ function App() {
   });
   //const theme = useTheme();
   //const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const { initializePost } = useStore();
+
+  useEffect(() => {
+    initializePost();
+  }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>

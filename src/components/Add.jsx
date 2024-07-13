@@ -142,15 +142,7 @@ const Add = () => {
           left: { xs: "calc(60% - 25px)", md: 15 },
           display: { xs: "block", sm: "block", md: "none" },
         }}
-      >
-        <Fab
-          onClick={initializePost}
-          color="success"
-          aria-label="add"
-        >
-          {isEnglish ? "Start" : "Inicio"}
-        </Fab>
-      </Tooltip>
+      ></Tooltip>
 
       <SytledModal
         open={open}
